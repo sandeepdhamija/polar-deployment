@@ -30,3 +30,19 @@ spec:
             limits:
               cpu: 200m
               memory: 120Mi
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: polar-postgres
+  labels:
+    db: polar-postgres
+spec:
+  type: ClusterIP
+  selector:
+    db: polar-postgres
+  ports:
+    - protocol: TCP
+      port: 5432
+      targetPort: 5432
